@@ -8,10 +8,11 @@ function App() {
   const [userObj, setUserObj] = useState(null); //user 확인
 
   useEffect(() => {
-    authService.onAuthStateChanged((user) => {   //user state변경값으로 로그인 여부
+    authService.onAuthStateChanged((user) => {
+      //user state변경값으로 로그인 여부
       if (user) {
         // setIsLoggedIn(true);
-        setUserObj(user)
+        setUserObj(user);
       } else {
         // setIsLoggedIn(false);
       }
@@ -20,9 +21,13 @@ function App() {
   }, []);
   return (
     <>
-    {init ?  <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "Init....."}
-     
-      <footer>&copy; {new Date().getFullYear()} Nwitter</footer>
+      {init ? (
+        <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} />
+      ) : (
+        "Init....."
+      )}
+
+      {/* <footer>&copy; {new Date().getFullYear()} Nwitter</footer> */}
     </>
   );
 }
